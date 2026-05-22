@@ -8,7 +8,7 @@ import {
   FaChevronDown,
   FaChevronUp
 } from 'react-icons/fa';
-import '../styles/videoInfoSidebar.css';
+import '../styles/VideoInfoSidebar.css';
 
 const VideoInfoSidebar = ({ video, isMobile }) => {
   const [showFullDescription, setShowFullDescription] = useState(false);
