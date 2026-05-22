@@ -1,0 +1,89 @@
+/* Left Side - Video Info Overlay */
+.video-info-overlay {
+  max-width: 60%;
+  margin-top: 200px;
+  align-self: flex-start;
+}
+
+.video-title-overlay {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.3;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.creator-info-overlay {
+  margin-bottom: 20px;
+}
+
+.creator-name-overlay {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.university-overlay {
+  display: block;
+  color: #ffb347;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.creator-stats-overlay {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+}
+
+.video-description-overlay {
+  margin-bottom: 25px;
+  line-height: 1.4;
+  font-size: 0.95rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.topics-section-overlay {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.topics-section-overlay h4 {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #ffb347;
+}
+
+.topic-item-overlay {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.topic-item-overlay:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.topic-item-overlay strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.topic-item-overlay p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+

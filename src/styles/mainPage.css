@@ -1,0 +1,512 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: auto;
+  width: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Enhanced Background - Lighter version of original */
+.background-shift {
+  animation: backgroundShift 20s ease-in-out infinite alternate;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+@keyframes backgroundShift {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05) rotate(0.5deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.1) rotate(1deg);
+    opacity: 1;
+  }
+}
+
+/* Main App Styles */
+.main-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  background: #000;
+}
+
+/* TikTok-style Layout */
+.main-page.tiktok-style {
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.content-container {
+  height: calc(100vh - var(--header-height, 70px));
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Set CSS custom properties for header height */
+:root {
+  --header-height: 70px; /* Default for desktop */
+}
+
+@media (max-width: 767px) {
+  :root {
+    --header-height: 120px; /* Two rows on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --header-height: 110px; /* Adjusted for smaller mobile */
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --header-height: 105px; /* Adjusted for extra small mobile */
+  }
+}
+
+/* Video Feed Container */
+.video-feed-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  background: #000;
+}
+
+.video-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.video-section.active {
+  transform: translateY(0);
+  z-index: 10;
+}
+
+.video-section.inactive {
+  transform: translateY(100%);
+  z-index: 1;
+}
+
+/* Video Content Wrapper - PC Layout */
+.video-content-wrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+/* Video Player Section - 3/4 width on PC */
+.video-player-section {
+  flex: 3;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Video Info Sidebar - 1/4 width on PC */
+.video-info-sidebar {
+  flex: 1;
+  background: #0f0f0f;
+  border-left: 1px solid #333;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+/* Mobile Video Info - Hidden on PC */
+.mobile-video-info {
+  display: none;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  animation: bounce 2s infinite;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-3px);
+  }
+}
+
+/* Upload Modal */
+.upload-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.upload-modal {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  min-width: 300px;
+}
+
+.upload-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.upload-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b6b, #ffa500);
+  transition: width 0.3s ease;
+}
+
+.cancel-upload-btn, .close-upload-btn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.upload-success {
+  color: #4caf50;
+  margin: 20px 0;
+}
+
+.upload-success span {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  color: white;
+  padding: 50px 20px;
+}
+
+.upload-cta-btn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+/* ==================== MOBILE RESPONSIVE DESIGN ==================== */
+
+/* Tablet Devices (768px to 1023px) */
+@media (max-width: 1023px) {
+  .video-content-wrapper {
+    flex-direction: column;
+  }
+
+  .video-player-section {
+    flex: 1;
+    height: 70vh;
+  }
+
+  .video-info-sidebar {
+    flex: 1;
+    border-left: none;
+    border-top: 1px solid #333;
+    max-height: 20vh;
+  }
+}
+
+/* Mobile Devices (767px and below) */
+@media (max-width: 767px) {
+  .video-content-wrapper {
+    flex-direction: column;
+  }
+
+  .video-player-section {
+    flex: 1;
+    height: 80vh;
+  }
+
+  /* Hide desktop sidebar on mobile */
+  .video-info-sidebar {
+    display: none;
+  }
+
+  /* Show mobile video info */
+  .mobile-video-info {
+    display: block;
+    background: #0f0f0f;
+    border-top: 1px solid #333;
+    max-height: 50vh;
+    overflow-y: auto;
+    border: solid 3px #ff6b6b;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+  }
+
+  .content-container {
+    height: calc(100vh - var(--header-height, 120px));
+  }
+}
+
+/* Small Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+  .video-player-section {
+    height: 55vh;
+  }
+
+  .mobile-video-info {
+    max-height: 20vh;
+  }
+
+  .scroll-indicator {
+    font-size: 0.8rem;
+    bottom: 20px;
+  }
+}
+
+/* Extra Small Mobile Devices (360px and below) */
+@media (max-width: 360px) {
+  .video-player-section {
+    height: 50vh;
+  }
+
+  .mobile-video-info {
+    max-height: 40vh;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .background-shift,
+  .scroll-indicator {
+    animation: none;
+  }
+}
+/* Upload Form Modal Styles */
+.upload-form-modal {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: left;
+  min-width: 500px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.upload-form-modal h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #ff6b6b;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.topics-section label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.topic-input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.topic-input-group input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+}
+
+.remove-topic-btn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.remove-topic-btn:hover {
+  background: #ff5252;
+}
+
+.add-topic-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.add-topic-btn:hover {
+  background: #45a049;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.cancel-btn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cancel-btn:hover {
+  background: #5a6268;
+}
+
+.upload-submit-btn {
+  background: linear-gradient(135deg, #ff6b6b, #ffb347);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.upload-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+.upload-submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive design for upload form */
+@media (max-width: 767px) {
+  .upload-form-modal {
+    min-width: 90vw;
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .topic-input-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .remove-topic-btn {
+    align-self: flex-end;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .cancel-btn,
+  .upload-submit-btn {
+    width: 100%;
+  }
+}

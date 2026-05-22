@@ -1,0 +1,153 @@
+/* Search Bar - Optimized for both PC and mobile layouts */
+.search-bar-container {
+  width: 100%;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  width: 100%;
+}
+
+.search-input-group {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  padding: 0 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+  min-width: 200px;
+}
+
+.search-input-group:focus-within {
+  border-color: #ffb347;
+  box-shadow: 0 0 0 2px rgba(255, 179, 71, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.search-icon {
+  color: rgba(255, 255, 255, 0.8);
+  margin-right: 0.8rem;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  padding: 0.8rem 0;
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+  width: 100%;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.voice-search {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+
+.voice-search:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffb347;
+}
+
+.search-btn {
+  background: linear-gradient(135deg, #ff6b6b, #ffb347);
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+  flex-shrink: 0;
+}
+
+.search-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 107, 107, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 767px) {
+  .search-form {
+    gap: 0.6rem;
+  }
+
+  .search-input-group {
+    padding: 0 1rem;
+    min-width: 150px;
+  }
+
+  .search-input {
+    padding: 0.7rem 0;
+    font-size: 0.9rem;
+  }
+
+  .search-btn {
+    padding: 0.7rem 1.4rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-form {
+    gap: 0.5rem;
+  }
+
+  .search-input-group {
+    padding: 0 0.8rem;
+  }
+
+  .search-input {
+    padding: 0.6rem 0;
+    font-size: 0.85rem;
+  }
+
+  .search-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .search-icon, .voice-search {
+    font-size: 0.9rem;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .search-input-group {
+    padding: 0 1.5rem;
+  }
+
+  .search-input {
+    padding: 0.9rem 0;
+    font-size: 1rem;
+  }
+
+  .search-btn {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+}
