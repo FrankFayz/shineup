@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/videoInfoSidebar.css';
+import '../styles/VideoInfoSidebar.css';
 
 const MobileVideoControls = ({ currentTime, duration, progress }) => {
   const formatTime = (seconds) => {
